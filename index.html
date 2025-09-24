@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Links</title>
+	<style>
+		textarea {
+			min-width: 75%;
+			min-height: 10rem;
+			display: block;
+		}
+
+		input[type=submit] {
+			min-width: 75%;
+			display: block;
+			padding: .5rem;
+			background: blue;
+			color: white;
+			margin-top: .5rem;
+		}
+	</style>
+</head>
+<body>
+	<form>
+		<textarea name="links" placeholder="links"></textarea>
+		<input type="submit" value="Submit">
+	</form>
+	<script>
+		const form     = document.querySelector('form')
+		const textarea = document.querySelector('textarea')
+
+		form.addEventListener('submit', e => {
+			e.preventDefault()
+			textarea.value.split('\n').map(link => fetch(link))
+		})
+	</script>
+</body>
+</html>

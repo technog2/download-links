@@ -26,13 +26,26 @@
 		<textarea name="links" placeholder="links"></textarea>
 		<input type="submit" value="Submit">
 	</form>
+	<ol id="videos"></ol>
 	<script>
 		const form     = document.querySelector('form')
 		const textarea = document.querySelector('textarea')
+		const videos   = document.querySelector('#videos')
 
 		form.addEventListener('submit', e => {
 			e.preventDefault()
-			textarea.value.split('\n').map(link => fetch(link))
+			textarea.value.split('\n').map(async (link, index) => {
+				const li  = document.createElement('li')
+				const vid = document.createElement('video')
+				vid.setAttribute('src', link)
+				vid.setAttribute('controls', true)
+				li.append(vid)
+				videos.append(li)
+
+				if (index === 0) vid.download()
+
+				await new Promise(r => setTimeout(r, 1000))
+			})
 		})
 	</script>
 </body>

@@ -19,6 +19,10 @@
 			color: white;
 			margin-top: .5rem;
 		}
+
+		video {
+			max-width: 75%;
+		}
 	</style>
 </head>
 <body>
@@ -41,11 +45,10 @@
 				vid.setAttribute('controls', true)
 				li.append(vid)
 				videos.append(li)
-				
+
 				await new Promise(r => setTimeout(r, 1000))
 			})
 		})
 	</script>
 </body>
 </html>
-

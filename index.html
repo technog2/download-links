@@ -34,19 +34,18 @@
 
 		form.addEventListener('submit', e => {
 			e.preventDefault()
-			textarea.value.split('\n').map(async (link, index) => {
+			textarea.value.split('\n').map(async link => {
 				const li  = document.createElement('li')
 				const vid = document.createElement('video')
 				vid.setAttribute('src', link)
 				vid.setAttribute('controls', true)
 				li.append(vid)
 				videos.append(li)
-
-				if (index === 0) vid.download()
-
+				
 				await new Promise(r => setTimeout(r, 1000))
 			})
 		})
 	</script>
 </body>
 </html>
+
